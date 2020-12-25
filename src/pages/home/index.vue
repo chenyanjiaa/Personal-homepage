@@ -1,7 +1,12 @@
 <template>
   <div class="homePage">
     <h1>{{ $t("common.music") }}</h1>
-    <el-select v-model="value" @change="langChange">
+    <el-date-picker
+      v-model="value1"
+      type="date"
+      :placeholder="$t('datepicker.selectDate')">
+    </el-date-picker>
+    <el-select v-model="value" @change="langChange" class="langBtn">
       <el-option
         v-for="item in options"
         :key="item.value"
@@ -18,13 +23,14 @@ export default {
   data() {
     return {
       options: [{
-        value: 'en',
-        label: 'English'
-      }, {
         value: 'zh',
         label: '中文'
+      }, {
+        value: 'en',
+        label: 'English'
       }],
-      value: 'zh'
+      value: 'zh',
+      value1: ''
     }
   },
   methods: {
@@ -35,5 +41,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .homePage {
+    background: snow;
+  }
+  .langBtn {
+    width: 100px;
+  }
 </style>

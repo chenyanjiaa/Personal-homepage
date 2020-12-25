@@ -1,16 +1,29 @@
 <template>
   <div id="app">
-    <router-view />
+    <NavMenu />
+    <transition name="slide">
+      <router-view style="width: 100%" />
+    </transition>
   </div>
 </template>
 
 <script>
+import NavMenu from '@/components/NavMenu'
 export default {
-  name: 'App'
+  name: 'App',
+  components: { NavMenu }
 }
 </script>
 
 <style>
+#app {
+  display: flex;
+  height: 100%;
+}
+body, html {
+  height: 100%;
+}
+
 body,
 ol,
 ul,
