@@ -3,14 +3,14 @@
     <el-menu
       style="height:100%"
       class="el-menu-vertical-demo"
-      background-color="#545c64"
-      text-color="#fff"
+      background-color="#001529"
+      text-color="#ccc"
       :collapse="isCollapse"
       :default-active="active"
       router
-      active-text-color="#ffd04b">
-      <div>
-        <i :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'" style="color:#909399; height:56px; width:64px; line-height:56px; font-size:20px; text-align:center; cursor:pointer;" @click="foldBtn"></i>
+      active-text-color="#fff">
+      <div style="position: absolute;bottom: 0;width: 100%;border-top: 1px solid #666;cursor:pointer;z-index:1;background: #001529;">
+        <i :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'" style="color:#909399; height:56px; width:100%; line-height:56px; font-size:20px;margin-left:20px" @click="foldBtn"></i>
       </div>
       <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
         <i class="el-icon-setting"></i>
@@ -66,6 +66,18 @@ export default {
       ]
     }
   },
+  watch: {
+    // $route(newVal, oldVal) {
+    //   let num = null
+    //   this.navList.forEach((item, index) => {
+    //     if(item.name === newVal.path) {
+    //       num = index
+    //     }
+    //   })
+    //   document.querySelectorAll('.el-menu-item')[num].setAttribute("style","background-color: #1890ff !important")
+    //   console.log(newVal.path, num, document.querySelectorAll('.el-menu-item')[num])
+    // }
+  },
   methods: {
     foldBtn() {
       this.isCollapse ? this.isCollapse = false : this.isCollapse = true
@@ -79,10 +91,14 @@ export default {
     background: #545c64;
     margin-right: 5px;
   }
-  .el-icon-s-fold:hover {
-    background: rgb(67, 74, 80);
+  .navMenu li:hover {
+    color: #fff !important;
+    background: #1890ff !important;
   }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
+  }
+  .is-active {
+    background: #1890ff !important;
   }
 </style>
